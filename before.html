@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>City Care Hospital</title>
+<style>
+body{font-family:Arial;margin:0}
+.top{background:#2a9d8f;color:#fff;padding:20px;font-size:28px}
+.menu div{display:inline-block;margin:10px;cursor:pointer;color:#2a9d8f}
+.box{border:1px solid #ccc;padding:15px;margin:15px}
+.big{font-size:22px;font-weight:bold}
+.small{color:#aaa;font-size:12px}
+.btn{background:#2a9d8f;color:#fff;padding:10px;display:inline-block;cursor:pointer}
+input,select{display:block;margin:8px 0;padding:6px;outline:none}
+</style>
+</head>
+<body>
+<div class="top">City Care Hospital</div>
+<div class="menu">
+  <div onclick="location='#services'">Services</div>
+  <div onclick="location='#doctors'">Doctors</div>
+  <div onclick="location='#book'">Book</div>
+</div>
+<div class="box" id="services">
+  <div class="big">Our Services</div>
+  <div>Cardiology</div><div>Pediatrics</div><div>Orthopedics</div><div>General Medicine</div>
+</div>
+<div class="box" id="doctors">
+  <div class="big">Our Doctors</div>
+  <div><div><b>Dr. Asha Rao</b></div><div class="small">Cardiologist, Mon-Fri 9am-1pm</div></div>
+  <div><div><b>Dr. Vikram Sen</b></div><div class="small">Pediatrician, Mon-Sat 10am-4pm</div></div>
+</div>
+<div class="box" id="book">
+  <div class="big">Book Appointment</div>
+  <input type="text" placeholder="Name">
+  <input type="text" placeholder="Email">
+  <input type="text" placeholder="Phone">
+  <input type="text" placeholder="Date">
+  <select><option>Select doctor</option><option>Dr. Asha Rao</option><option>Dr. Vikram Sen</option></select>
+  <div class="btn" onclick="alert('Booked!')">Submit</div>
+</div>
+<div class="small">(c) City Care Hospital</div>
+</body>
+</html>
