@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>City Care Hospital – Book an Appointment</title>
+<style>
+:root{--ink:#1d2a2f;--brand:#0b5d57;--line:#8aa0a3;--err:#a4161a;--bg:#f5f9f9}
+*{box-sizing:border-box}
+body{font:1rem/1.6 system-ui,sans-serif;color:var(--ink);background:var(--bg);margin:0}
+.skip{position:absolute;left:-999px;background:#fff;padding:.5rem 1rem}
+.skip:focus{left:1rem;top:1rem;z-index:10}
+header{background:var(--brand);color:#fff;padding:1rem 1.5rem}
+header h1{margin:0 0 .5rem;font-size:1.75rem}
+nav ul{display:flex;gap:1.25rem;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav a{color:#fff;font-weight:600}
+main{max-width:46rem;margin:0 auto;padding:1rem 1.5rem}
+section{margin-block:2rem}
+h2{color:var(--brand);border-bottom:2px solid var(--brand);padding-bottom:.25rem}
+article{background:#fff;border:1px solid var(--line);border-radius:.5rem;padding:.75rem 1rem;margin-block:.75rem}
+article h3{margin:0}
+form{background:#fff;border:1px solid var(--line);border-radius:.5rem;padding:1rem 1.25rem}
+fieldset{border:0;margin:0;padding:0}
+legend{font-weight:700;font-size:1.1rem;padding:0;margin-bottom:.5rem}
+.field{margin-block:1rem}
+label{display:block;font-weight:600}
+.hint{font-size:.9rem;color:#4a5b60;margin:0}
+.req{color:var(--err)}
+input,select,textarea{width:100%;font:inherit;padding:.5rem;border:2px solid var(--line);border-radius:.25rem;margin-top:.25rem}
+[aria-invalid="true"]{border-color:var(--err)}
+.error{color:var(--err);font-weight:600;margin:.25rem 0 0}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #ffbf47;outline-offset:2px}
+button{font:inherit;font-weight:700;background:var(--brand);color:#fff;border:0;border-radius:.25rem;padding:.7rem 1.4rem;cursor:pointer}
+#summary{border:2px solid var(--err);padding:.75rem 1rem;border-radius:.5rem;margin-bottom:1rem}
+#summary:focus{outline:3px solid #ffbf47}
+#status{font-weight:700;color:var(--brand)}
+footer{text-align:center;padding:1.5rem;font-size:.9rem}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<header>
+  <h1>City Care Hospital</h1>
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#doctors">Doctors</a></li>
+      <li><a href="#book">Book appointment</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+  <section id="services" aria-labelledby="services-h">
+    <h2 id="services-h">Our services</h2>
+    <ul>
+      <li>Cardiology</li><li>Pediatrics</li><li>Orthopedics</li><li>General medicine</li>
+    </ul>
+  </section>
+
+  <section id="doctors" aria-labelledby="doctors-h">
+    <h2 id="doctors-h">Our doctors</h2>
+    <article>
+      <h3>Dr. Asha Rao</h3>
+      <p>Cardiologist. Available Monday to Friday, 9 am to 1 pm.</p>
+    </article>
+    <article>
+      <h3>Dr. Vikram Sen</h3>
+      <p>Pediatrician. Available Monday to Saturday, 10 am to 4 pm.</p>
+    </article>
+  </section>
+
+  <section id="book" aria-labelledby="book-h">
+    <h2 id="book-h">Book an appointment</h2>
+    <p>Fields marked <span class="req" aria-hidden="true">*</span>are required.</p>
+    <form id="appt" novalidate>
+      <div id="summary" tabindex="-1" role="alert" hidden></div>
+      <fieldset>
+        <legend>Patient details</legend>
+
+        <div class="field">
+          <label for="name">Full name <span class="req" aria-hidden="true">*</span></label>
+          <input id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-err">
+          <p id="name-err" class="error" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="email">Email address <span class="req" aria-hidden="true">*</span></label>
+          <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-hint email-err">
+          <p id="email-hint" class="hint">We send your confirmation here.</p>
+          <p id="email-err" class="error" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone number <span class="req" aria-hidden="true">*</span></label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="numeric" required pattern="[0-9]{10}" aria-describedby="phone-hint phone-err">
+          <p id="phone-hint" class="hint">10 digits, no spaces.</p>
+          <p id="phone-err" class="error" hidden></p>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Appointment details</legend>
+
+        <div class="field">
+          <label for="doctor">Doctor <span class="req" aria-hidden="true">*</span></label>
+          <select id="doctor" name="doctor" required aria-describedby="doctor-err">
+            <option value="">Choose a doctor</option>
+            <option>Dr. Asha Rao (Cardiology)</option>
+            <option>Dr. Vikram Sen (Pediatrics)</option>
+          </select>
+          <p id="doctor-err" class="error" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="date">Preferred date <span class="req" aria-hidden="true">*</span></label>
+          <input id="date" name="date" type="date" required aria-describedby="date-err">
+          <p id="date-err" class="error" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="reason">Reason for visit (optional)</label>
+          <textarea id="reason" name="reason" rows="3"></textarea>
+        </div>
+      </fieldset>
+
+      <button type="submit">Book appointment</button>
+      <p id="status" role="status"></p>
+    </form>
+  </section>
+</main>
+
+<footer><p>&copy; 2026 City Care Hospital</p></footer>
+
+<script>
+const form = document.getElementById('appt');
+const summary = document.getElementById('summary');
+const status = document.getElementById('status');
+const date = document.getElementById('date');
+date.min = new Date().toISOString().split('T')[0];
+
+const messages = {
+  name:   'Enter your full name.',
+  email:  'Enter a valid email address, for example name@example.com.',
+  phone:  'Enter a 10-digit phone number using digits only.',
+  doctor: 'Choose a doctor from the list.',
+  date:   'Choose today or a future date.'
+};
+
+function check(field) {
+  const err = document.getElementById(field.id + '-err');
+  if (!err) return true;
+  const ok = field.checkValidity();
+  field.setAttribute('aria-invalid', String(!ok));
+  err.hidden = ok;
+  err.textContent = ok ? '' : messages[field.id];
+  return ok;
+}
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  status.textContent = '';
+  const fields = [...form.querySelectorAll('input[required], select[required]')];
+  const bad = fields.filter(f => !check(f));
+  if (bad.length) {
+    summary.hidden = false;
+    summary.innerHTML = '<p><strong>Please fix ' + bad.length + ' error(s):</strong></p><ul>' +
+      bad.map(f => '<li><a href="#' + f.id + '">' + messages[f.id] + '</a></li>').join('') + '</ul>';
+    summary.focus();
+    return;
+  }
+  summary.hidden = true;
+  status.textContent = 'Your appointment request has been submitted.';
+  form.reset();
+});
+
+form.addEventListener('focusout', e => {
+  if (e.target.matches('[required]') && e.target.value) check(e.target);
+});
+</script>
+</body>
+</html>
